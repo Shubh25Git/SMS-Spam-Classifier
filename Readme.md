@@ -74,3 +74,59 @@ Removes common English stop words (like "is", "the", "and") and standard punctua
 Applies the NLTK PorterStemmer to reduce words to their root or base form (e.g., "dancing", "dances", and "danced" all become "danc"). This dramatically reduces the overall vocabulary size.
 
 Built with Python as part of my Machine Learning learning journey.
+
+
+
+
+
+## 4. Model Building
+
+In this step, different machine learning algorithms were trained and evaluated to find the best model for SMS spam classification.
+
+### 4.1 Feature Extraction
+
+Text data was converted into numerical features using `CountVectorizer` and `TfidfVectorizer`.
+
+- **Bag of Words (BoW):** Converts text into a numerical representation based on word frequencies.
+- **TF-IDF:** Assigns importance to words based on their frequency in a message and across the dataset.
+
+### 4.2 Naive Bayes Classifiers
+
+Three variants of the Naive Bayes algorithm were implemented and evaluated:
+
+- **Gaussian Naive Bayes:** Assumes that features follow a Gaussian distribution.
+- **Multinomial Naive Bayes:** Suitable for discrete features such as word counts and TF-IDF values.
+- **Bernoulli Naive Bayes:** Works with binary features representing the presence or absence of words.
+
+The models were evaluated using accuracy, confusion matrix, and precision score.
+
+### 4.3 Training Multiple Classification Models
+
+Several machine learning algorithms were trained and compared:
+
+- Support Vector Classifier (SVC)
+- K-Nearest Neighbors (KNN)
+- Multinomial Naive Bayes
+- Decision Tree Classifier
+- Logistic Regression
+- Random Forest Classifier
+- AdaBoost Classifier
+- Bagging Classifier
+- Extra Trees Classifier
+- Gradient Boosting Classifier
+- XGBoost Classifier
+
+### 4.4 Model Evaluation
+
+A reusable function was created to train each classifier and evaluate its predictions on the test dataset.
+
+The following evaluation metrics were used:
+
+- **Accuracy:** Measures the overall proportion of correctly classified messages.
+- **Precision:** Measures how many messages predicted as spam were actually spam.
+
+The accuracy and precision scores of all classifiers were stored for comparison to identify a suitable model for the spam classification task.
+
+### Outcome
+
+This step established a common evaluation process for comparing multiple machine learning algorithms and identifying promising candidates for the final SMS Spam Classifier.
