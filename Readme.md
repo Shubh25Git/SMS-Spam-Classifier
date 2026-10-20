@@ -2,6 +2,11 @@
 
 A machine learning project to analyze SMS messages and explore the differences between Spam and Ham (Not Spam) messages using Python and data analysis techniques.
 
+## 🚀 Live Demo
+
+[Try the SMS Spam Classifier](https://sms-spam-classifier-ev8j.onrender.com)
+
+
 🎯 Project Objective
 
 The objective of this project is to explore an SMS dataset, understand its structure, and identify patterns that may help distinguish spam messages from legitimate messages.
@@ -261,4 +266,7 @@ The final application allows users to interact with a trained machine learning m
 
 
 **Built with Python, NLTK, Scikit-learn, and Streamlit as part of my Machine Learning learning journey.**
+
+
+
 
