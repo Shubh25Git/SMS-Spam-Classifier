@@ -127,6 +127,138 @@ The following evaluation metrics were used:
 
 The accuracy and precision scores of all classifiers were stored for comparison to identify a suitable model for the spam classification task.
 
-### Outcome
 
-This step established a common evaluation process for comparing multiple machine learning algorithms and identifying promising candidates for the final SMS Spam Classifier.
+
+
+## 🌐 5. Web Application Development
+
+After training and evaluating multiple machine learning models, a web application was developed using **Streamlit** to make the SMS Spam Classifier interactive and easy to use.
+
+The application allows users to enter or paste an SMS or email message and analyze it to determine whether it is **Spam** or **Ham (Not Spam)**.
+
+### 5.1 Technologies Used
+
+- **Streamlit:** Used to build the interactive web interface using Python.
+- **NLTK:** Used for text preprocessing, tokenization, stop-word removal, and stemming.
+- **TF-IDF Vectorizer:** Converts the preprocessed message into numerical features.
+- **Multinomial Naive Bayes:** The trained machine learning model used to classify messages.
+- **Pickle:** Used to save and load the trained model and TF-IDF vectorizer.
+
+### 5.2 Loading the Trained Model
+
+The trained Multinomial Naive Bayes model and TF-IDF vectorizer are saved as pickle files and loaded into the application.
+
+- `Models/vectorizer.pkl` — Stores the fitted TF-IDF vectorizer.
+- `Models/model.pkl` — Stores the trained Multinomial Naive Bayes classifier.
+
+The Streamlit `@st.cache_resource` decorator is used to cache these objects, avoiding repeated model loading during application interactions.
+
+### 5.3 Message Preprocessing
+
+When a user enters a message, the application applies the same `transform_text()` preprocessing function used during model development.
+
+The preprocessing steps include:
+
+1. Converting the message to lowercase.
+2. Tokenizing the text using NLTK.
+3. Removing special characters and non-alphanumeric tokens.
+4. Removing English stop words and punctuation.
+5. Applying Porter stemming to reduce words to their root forms.
+
+This ensures that the input message is processed consistently with the text used to train the model.
+
+### 5.4 Converting Text into Numerical Features
+
+Machine learning models cannot directly understand raw text. Therefore, the preprocessed message is transformed into numerical features using the previously fitted TF-IDF vectorizer.
+
+The vectorizer converts the message into a numerical representation based on the vocabulary and word importance learned from the training data.
+
+### 5.5 Spam Prediction
+
+The numerical features are passed to the trained Multinomial Naive Bayes classifier to generate a prediction.
+
+- **Spam (1):** The message is classified as spam.
+- **Ham (0):** The message is classified as not spam.
+
+The predicted class is then displayed to the user through the Streamlit interface.
+
+### 5.6 User Interface and Result Display
+
+The application includes the following interface components:
+
+- A sidebar containing basic application information.
+- A text area where users can enter or paste a message.
+- An **Analyze Message** button to initiate classification.
+- Input validation to prevent analysis of empty messages.
+- A loading indicator while the message is being processed.
+- A result notification displaying whether the message is spam or not spam.
+
+The interface uses a warning-style alert for spam predictions and a success-style message for non-spam predictions.
+
+## 🔄 6. End-to-End Application Workflow
+
+The complete workflow of the SMS Spam Classifier is:
+
+1. The user enters an SMS or email message.
+2. The application validates the input.
+3. The text preprocessing function cleans and stems the message.
+4. The TF-IDF vectorizer converts the processed text into numerical features.
+5. The trained Multinomial Naive Bayes model predicts the message category.
+6. Streamlit displays the classification result to the user.
+
+**Workflow:** User Input → Text Preprocessing → TF-IDF Vectorization → Multinomial Naive Bayes Prediction → Result Display
+
+
+## 🎯 7. Final Outcome
+
+The project combines data analysis, natural language processing, feature extraction, machine learning, and web application development into a single workflow.
+
+The final application allows users to interact with a trained machine learning model through a simple web interface without needing to run the training notebook or write Python code.
+
+### Key Learning Outcomes
+
+- Performed data cleaning and exploratory data analysis on an SMS dataset.
+- Implemented text preprocessing using NLTK.
+- Explored Bag of Words and TF-IDF feature extraction.
+- Trained and compared multiple machine learning classification algorithms.
+- Evaluated models using accuracy, precision, and confusion matrices.
+- Saved and reused trained machine learning objects with Pickle.
+- Built an interactive web application using Streamlit.
+- Integrated text preprocessing, vectorization, and prediction into an end-to-end application.
+
+## ⚠️ 8. Limitations
+
+- The prediction depends on the quality and coverage of the training dataset.
+- Legitimate messages may occasionally be classified as spam, and spam messages may be classified as legitimate.
+- The application displays a predicted category and should not be treated as a guarantee that a message is safe.
+- The current implementation uses a traditional machine learning model rather than a deep learning or large language model.
+
+## 🔮 9. Future Improvements
+
+- Deploy the application so users can access it online.
+- Add a confidence or probability score to the prediction interface.
+- Improve the user interface and add example messages for testing.
+- Expand the dataset with more diverse spam and legitimate messages.
+- Add automated tests for text preprocessing and model predictions.
+- Track model performance and retrain the model when necessary.
+
+---
+
+## 🖥️ Application Screenshots
+
+### 🏠 Home Page
+
+![SMS Spam Classifier Home Page](screenshots/Home_page.png)
+
+### ✅ Not Spam Prediction
+
+![Not Spam Result](screenshots/Not%20spam%20result.png)
+
+### 🚨 Spam Prediction
+
+![Spam Result](screenshots/spam_result.png)
+
+
+
+**Built with Python, NLTK, Scikit-learn, and Streamlit as part of my Machine Learning learning journey.**
+
